@@ -11,7 +11,7 @@ namespace NewCatalog.Controllers
 {
     [ApiController]
     [Route("items")]
-    public class ItemsController : Controller
+    public class ItemsController : ControllerBase
     {
 
         private readonly IItemsRepository repository;
@@ -24,9 +24,9 @@ namespace NewCatalog.Controllers
         public async Task<IEnumerable<ItemDto>> GetItemsAsync()
         {
             var items = (await repository.GetItemsAsync()).Select(item => item.AsDto());
-
-            return items;
-
+            {
+                return items;
+            }
 
 
         }
@@ -91,9 +91,6 @@ namespace NewCatalog.Controllers
             await repository.DeleteItemAsync(id);
             return NoContent();
         }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        
     }
 }
