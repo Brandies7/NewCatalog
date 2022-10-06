@@ -46,7 +46,7 @@ namespace NewCatalog.Controllers
         [HttpPost]
         public async Task<ActionResult<ItemDto>> CreateItemAsync(CreateItemDto itemDto)
         {
-            Item item = new Item()
+            Item item = new()
             {
                 Id = Guid.NewGuid(),
                 Name = itemDto.Name,
@@ -91,6 +91,6 @@ namespace NewCatalog.Controllers
             await repository.DeleteItemAsync(id);
             return NoContent();
         }
-        
+
     }
 }
